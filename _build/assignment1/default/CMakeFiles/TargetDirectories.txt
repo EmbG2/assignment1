@@ -1,0 +1,5 @@
+/Users/gianmarco/University/EmbeddedSystems/MPLABXProjects/assignment1/_build/assignment1/default/CMakeFiles/assignment1_default_default_XC16_compile.dir
+/Users/gianmarco/University/EmbeddedSystems/MPLABXProjects/assignment1/_build/assignment1/default/CMakeFiles/assignment1_default_default.elf.dir
+/Users/gianmarco/University/EmbeddedSystems/MPLABXProjects/assignment1/_build/assignment1/default/CMakeFiles/assignment1_default_Bin2Hex.dir
+/Users/gianmarco/University/EmbeddedSystems/MPLABXProjects/assignment1/_build/assignment1/default/CMakeFiles/edit_cache.dir
+/Users/gianmarco/University/EmbeddedSystems/MPLABXProjects/assignment1/_build/assignment1/default/CMakeFiles/rebuild_cache.dir

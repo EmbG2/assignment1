@@ -1,0 +1,8 @@
+# ninja log v6
+1	515	1744550528658311001	CMakeFiles/assignment1_default_default_XC16_compile.dir/Users/gianmarco/University/EmbeddedSystems/MPLABXProjects/assignment1/uart.c.o	f19b7124c30ad290
+813	848	1744547154524962329	/Users/gianmarco/University/EmbeddedSystems/MPLABXProjects/assignment1/_build/assignment1/default/CMakeFiles/assignment1_default_Bin2Hex	8e30ac7edd18f766
+813	848	1744547154524962329	CMakeFiles/assignment1_default_Bin2Hex	8e30ac7edd18f766
+368	813	1744547154524580579	/Users/gianmarco/University/EmbeddedSystems/MPLABXProjects/assignment1/out/assignment1/default.elf	7f43491b239ef68f
+368	813	1744547154524580579	assignment1_default_default.elf	7f43491b239ef68f
+1	651	1744551908907459640	CMakeFiles/assignment1_default_default_XC16_compile.dir/Users/gianmarco/University/EmbeddedSystems/MPLABXProjects/assignment1/main.c.o	693bcd47696cca07
+1	514	1744550528658218584	CMakeFiles/assignment1_default_default_XC16_compile.dir/Users/gianmarco/University/EmbeddedSystems/MPLABXProjects/assignment1/timer.c.o	f5909efc4294d799

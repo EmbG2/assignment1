@@ -1,0 +1,26 @@
+[
+{
+  "directory": "/Users/gianmarco/University/EmbeddedSystems/MPLABXProjects/assignment1/_build/assignment1/default",
+  "command": "/Applications/microchip/xc16/v2.10/bin/xc16-gcc -DXPRJ_default=default -g -mcpu=33EP512MU810 -O0 -msmart-io=1 -Wall -msfr-warn=off -mdfp=/Users/gianmarco/.mchp_packs/Microchip/dsPIC33E-GM-GP-MC-GU-MU_DFP/1.6.297/xc16 -o CMakeFiles/assignment1_default_default_XC16_compile.dir/Users/gianmarco/University/EmbeddedSystems/MPLABXProjects/assignment1/main.c.o -c /Users/gianmarco/University/EmbeddedSystems/MPLABXProjects/assignment1/main.c",
+  "file": "/Users/gianmarco/University/EmbeddedSystems/MPLABXProjects/assignment1/main.c",
+  "output": "CMakeFiles/assignment1_default_default_XC16_compile.dir/Users/gianmarco/University/EmbeddedSystems/MPLABXProjects/assignment1/main.c.o"
+},
+{
+  "directory": "/Users/gianmarco/University/EmbeddedSystems/MPLABXProjects/assignment1/_build/assignment1/default",
+  "command": "/Applications/microchip/xc16/v2.10/bin/xc16-gcc -DXPRJ_default=default -g -mcpu=33EP512MU810 -O0 -msmart-io=1 -Wall -msfr-warn=off -mdfp=/Users/gianmarco/.mchp_packs/Microchip/dsPIC33E-GM-GP-MC-GU-MU_DFP/1.6.297/xc16 -o CMakeFiles/assignment1_default_default_XC16_compile.dir/Users/gianmarco/University/EmbeddedSystems/MPLABXProjects/assignment1/parser.c.o -c /Users/gianmarco/University/EmbeddedSystems/MPLABXProjects/assignment1/parser.c",
+  "file": "/Users/gianmarco/University/EmbeddedSystems/MPLABXProjects/assignment1/parser.c",
+  "output": "CMakeFiles/assignment1_default_default_XC16_compile.dir/Users/gianmarco/University/EmbeddedSystems/MPLABXProjects/assignment1/parser.c.o"
+},
+{
+  "directory": "/Users/gianmarco/University/EmbeddedSystems/MPLABXProjects/assignment1/_build/assignment1/default",
+  "command": "/Applications/microchip/xc16/v2.10/bin/xc16-gcc -DXPRJ_default=default -g -mcpu=33EP512MU810 -O0 -msmart-io=1 -Wall -msfr-warn=off -mdfp=/Users/gianmarco/.mchp_packs/Microchip/dsPIC33E-GM-GP-MC-GU-MU_DFP/1.6.297/xc16 -o CMakeFiles/assignment1_default_default_XC16_compile.dir/Users/gianmarco/University/EmbeddedSystems/MPLABXProjects/assignment1/timer.c.o -c /Users/gianmarco/University/EmbeddedSystems/MPLABXProjects/assignment1/timer.c",
+  "file": "/Users/gianmarco/University/EmbeddedSystems/MPLABXProjects/assignment1/timer.c",
+  "output": "CMakeFiles/assignment1_default_default_XC16_compile.dir/Users/gianmarco/University/EmbeddedSystems/MPLABXProjects/assignment1/timer.c.o"
+},
+{
+  "directory": "/Users/gianmarco/University/EmbeddedSystems/MPLABXProjects/assignment1/_build/assignment1/default",
+  "command": "/Applications/microchip/xc16/v2.10/bin/xc16-gcc -DXPRJ_default=default -g -mcpu=33EP512MU810 -O0 -msmart-io=1 -Wall -msfr-warn=off -mdfp=/Users/gianmarco/.mchp_packs/Microchip/dsPIC33E-GM-GP-MC-GU-MU_DFP/1.6.297/xc16 -o CMakeFiles/assignment1_default_default_XC16_compile.dir/Users/gianmarco/University/EmbeddedSystems/MPLABXProjects/assignment1/uart.c.o -c /Users/gianmarco/University/EmbeddedSystems/MPLABXProjects/assignment1/uart.c",
+  "file": "/Users/gianmarco/University/EmbeddedSystems/MPLABXProjects/assignment1/uart.c",
+  "output": "CMakeFiles/assignment1_default_default_XC16_compile.dir/Users/gianmarco/University/EmbeddedSystems/MPLABXProjects/assignment1/uart.c.o"
+}
+]

@@ -1,0 +1,50 @@
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/Users/gianmarco/.mplab/app-finder/apps/cmake/v3.31.6/cmake-3.31.6-macos-universal/CMake.app/Contents/share/cmake-3.31/Modules/CMakeDetermineSystem.cmake:200 (message)"
+      - "CMakeLists.txt:17 (project)"
+    message: |
+      The target system is: Generic -  - 
+      The host system is: Darwin - 24.4.0 - arm64
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/Users/gianmarco/.mplab/app-finder/apps/cmake/v3.31.6/cmake-3.31.6-macos-universal/CMake.app/Contents/share/cmake-3.31/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/Users/gianmarco/.mplab/app-finder/apps/cmake/v3.31.6/cmake-3.31.6-macos-universal/CMake.app/Contents/share/cmake-3.31/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/Users/gianmarco/.mplab/app-finder/apps/cmake/v3.31.6/cmake-3.31.6-macos-universal/CMake.app/Contents/share/cmake-3.31/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:17 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+      Compiler: /Applications/microchip/xc16/v2.10/bin/xc16-gcc 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      Assembler messages:
+      Warning: Using default target divide cycle count of 17; please specify device.
+      
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+      
+      The C compiler identification is GNU, found in:
+        /Users/gianmarco/University/EmbeddedSystems/MPLABXProjects/assignment1/_build/assignment1/default/CMakeFiles/3.31.6/CompilerIdC/a.out
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/Users/gianmarco/.mplab/app-finder/apps/cmake/v3.31.6/cmake-3.31.6-macos-universal/CMake.app/Contents/share/cmake-3.31/Modules/CMakeDetermineCompilerId.cmake:1237 (message)"
+      - "/Users/gianmarco/.mplab/app-finder/apps/cmake/v3.31.6/cmake-3.31.6-macos-universal/CMake.app/Contents/share/cmake-3.31/Modules/CMakeDetermineASMCompiler.cmake:135 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "CMakeLists.txt:17 (project)"
+    message: |
+      Checking whether the ASM compiler is GNU using "--version" matched "(GNU assembler)|(GCC)|(Free Software Foundation)":
+      elf-gcc (Microchip Technology) 4.5.1 (XC16, Microchip v2.10)  (A) Build date: Mar 27 2023
+      Part support version: 2.10 (A)
+      __XC16_VERSION__ == 2010
+      Copyright (C) 2010 Free Software Foundation, Inc.
+      This is free software; see the source for copying conditions.  There is NO
+      warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+...
