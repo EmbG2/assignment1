@@ -12,6 +12,7 @@
 #include "parser.h"
 #include "buffer.h"
 #include <stdio.h>
+#include <string.h>
 #include <math.h>
 
 #define FCY 72000000UL
