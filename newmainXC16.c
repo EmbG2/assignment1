@@ -90,12 +90,21 @@ void process_uart(void) {
 int main(void) {
     ANSELA = ANSELB = ANSELC = ANSELD = ANSELE = ANSELG = 0x0000;
 
+    // Init LED2
     TRISGbits.TRISG9 = 0;
 
+    // Init parser
+    parser_state pstate;
+	pstate.state = STATE_DOLLAR;
+	pstate.index_type = 0; 
+	pstate.index_payload = 0;
+    
+    // Init UART
     UART_Init(UART_1);
     send_uart_char(UART_1, 'S');
     send_uart_char(UART_1, '\n');
 
+    // Init SPI
     spi_init();
     tmr_wait_ms(TIMER1, 100);
 
