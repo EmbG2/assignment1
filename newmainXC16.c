@@ -129,18 +129,16 @@ int main(void) {
 
     ps.state = STATE_DOLLAR;
 
-    TRISDbits.TRISD2 = 0;
-
     while (1) {
         static int mag_send_timer = 0;
         static int yaw_send_timer = 0;
 
         simulate_algorithm();
 
-    if (led_toggle_flag) {
-        led_toggle_flag = 0;
-        update_led();
-    }
+        if (led_toggle_flag) {
+            led_toggle_flag = 0;
+            update_led();
+        }
 
         // Magnetometer read (still every 10 ms for moving average)
         MAG_CS = 0;
@@ -174,7 +172,7 @@ int main(void) {
             send_uart_string(buff);
         }
 
-        process_uart();
+//        process_uart();
         tmr_wait_period(TIMER1);
     }
 }
