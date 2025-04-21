@@ -74,10 +74,18 @@ void update_led(void) {
 
 void process_uart(void) {
     char c;
+    send_uart_string("$IN_PROC_UART*\n");
+
     while (buffer_read(&main_buffer_1, &c)) {
         if (parse_byte(&ps, c) == NEW_MESSAGE) {
+            sprintf(buff, "$MSG,%s,%s*\n", ps.msg_type, ps.msg_payload);
+            send_uart_string(buff);
+
             if (strcmp(ps.msg_type, "RATE") == 0) {
                 int new_rate = extract_integer(ps.msg_payload);
+                sprintf(buff, "$NEW_RATE,%d*\n", new_rate);
+                send_uart_string(buff);
+
                 if (new_rate == 0 || new_rate == 1 || new_rate == 2 || new_rate == 4 || new_rate == 5 || new_rate == 10) {
                     mag_rate_hz = new_rate;
                 } else {
@@ -87,6 +95,7 @@ void process_uart(void) {
         }
     }
 }
+
 
 int main(void) {
     ANSELA = ANSELB = ANSELC = ANSELD = ANSELE = ANSELG = 0x0000;
