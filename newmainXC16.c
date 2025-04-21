@@ -75,17 +75,14 @@ void update_led(void) {
 void process_uart(void) {
     char c;
     while (buffer_read(&main_buffer_1, &c)) {
-
         if (parse_byte(&ps, c) == NEW_MESSAGE) {
             sprintf(buff, "$MSG,%s,%s*\n", ps.msg_type, ps.msg_payload);
             send_uart_string(buff);
-
             if (strcmp(ps.msg_type, "RATE") == 0) {
                 int new_rate = extract_integer(ps.msg_payload);
-                sprintf(buff, "$NEW_RATE,%d*\n", new_rate);
-                send_uart_string(buff);
-
                 if (new_rate == 0 || new_rate == 1 || new_rate == 2 || new_rate == 4 || new_rate == 5 || new_rate == 10) {
+                    sprintf(buff, "$NEW_RATE,%d*\n", new_rate);
+                    send_uart_string(buff);
                     mag_rate_hz = new_rate;
                 } else {
                     send_uart_string("$ERR,1*\n");
@@ -175,21 +172,21 @@ int main(void) {
         yaw_send_timer += 10;
 
         // Send $MAG at mag_rate_hz
-//        if (mag_rate_hz != 0) {
-//            if (mag_send_timer >= (1000 / mag_rate_hz)) {
-//                mag_send_timer = 0;
-//                sprintf(buff, "$MAG,%d,%d,%d*\n", average_x, average_y, average_z);
-//                send_uart_string(buff);
-//            }
-//        }
+        if (mag_rate_hz != 0) {
+            if (mag_send_timer >= (1000 / mag_rate_hz)) {
+                mag_send_timer = 0;
+                sprintf(buff, "$MAG,%d,%d,%d*\n", average_x, average_y, average_z);
+                send_uart_string(buff);
+            }
+        }
 
         // Send $YAW every 200 ms (5 Hz)
-//        if (yaw_send_timer >= 200) {
-//            yaw_send_timer = 0;
-//            int heading_deg = atan2(average_y, average_x) * (180.0 / M_PI);
-//            sprintf(buff, "$YAW,%d*\n", heading_deg);
-//            send_uart_string(buff);
-//        }
+        if (yaw_send_timer >= 200) {
+            yaw_send_timer = 0;
+            int heading_deg = atan2(average_y, average_x) * (180.0 / M_PI);
+            sprintf(buff, "$YAW,%d*\n", heading_deg);
+            send_uart_string(buff);
+        }
 
         process_uart();
         tmr_wait_period(TIMER2);
