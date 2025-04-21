@@ -74,9 +74,9 @@ void update_led(void) {
 
 void process_uart(void) {
     char c;
-    send_uart_string("$IN_PROC_UART*\n");
-
     while (buffer_read(&main_buffer_1, &c)) {
+        send_uart_char(UART_1, c);  // NEW: Echo received character
+
         if (parse_byte(&ps, c) == NEW_MESSAGE) {
             sprintf(buff, "$MSG,%s,%s*\n", ps.msg_type, ps.msg_payload);
             send_uart_string(buff);

@@ -152,11 +152,11 @@ Default Scalar Model: Small
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x200              0x1570          0x2028  (8232)
-.const                      0x1770                0x4a            0x6f  (111)
-.text                       0x17ba               0xa86           0xfc9  (4041)
-.dinit                      0x2240                0x42            0x63  (99)
+.const                      0x1770                0x3a            0x57  (87)
+.text                       0x17aa               0xa8a           0xfcf  (4047)
+.dinit                      0x2234                0x42            0x63  (99)
 
-                 Total "program" memory used (bytes):         0x30c3  (12483) 2%
+                 Total "program" memory used (bytes):         0x30b1  (12465) 2%
 
 
 Auxflash Memory  [Origin = 0x7fc000, Length = 0x3ffa]
@@ -291,39 +291,39 @@ External Symbols in Program Memory (by address):
                   0x0016ac                  ___umoddi3
                   0x0016b4                  ___divdi3
                   0x001714                  ___moddi3
-                  0x0017ba                  _calculate_moving_average
-                  0x00181e                  _merge_significant_bits
-                  0x001878                  _simulate_algorithm
-                  0x001884                  _update_led
-                  0x0018a2                  _process_uart
-                  0x00192a                  _main
-                  0x001a9e                  _tmr_setup_period
-                  0x001b9c                  _tmr_wait_period
-                  0x001bce                  _tmr_wait_ms
-                  0x001bfa                  _tmr_wait_period_3
-                  0x001c50                  _tmr_wait_ms_3
-                  0x001c86                  _tmr_turn
-                  0x001cda                  _buffer_init
-                  0x001d22                  _buffer_write
-                  0x001d6c                  _buffer_read
-                  0x001db8                  _buffer_peek
-                  0x001df0                  _uart_debug_send
-                  0x001e08                  _detect_pattern
-                  0x001ee0                  _parse_byte
-                  0x001fe0                  _extract_integer
-                  0x00205e                  _next_value
-                  0x00209a                  _UART_Init
-                  0x002116                  _send_uart_char
-                  0x002152                  _send_uart_string
-                  0x002176                  _spi_init
-                  0x0021c6                  _spi_transfer
-                  0x0021ea                  _spi_write
-                  0x0021fe                  _spi_read
-                  0x002210                  _spi_read_multiple
+                  0x0017aa                  _calculate_moving_average
+                  0x00180e                  _merge_significant_bits
+                  0x001868                  _simulate_algorithm
+                  0x001874                  _update_led
+                  0x001892                  _process_uart
+                  0x00191e                  _main
+                  0x001a92                  _tmr_setup_period
+                  0x001b90                  _tmr_wait_period
+                  0x001bc2                  _tmr_wait_ms
+                  0x001bee                  _tmr_wait_period_3
+                  0x001c44                  _tmr_wait_ms_3
+                  0x001c7a                  _tmr_turn
+                  0x001cce                  _buffer_init
+                  0x001d16                  _buffer_write
+                  0x001d60                  _buffer_read
+                  0x001dac                  _buffer_peek
+                  0x001de4                  _uart_debug_send
+                  0x001dfc                  _detect_pattern
+                  0x001ed4                  _parse_byte
+                  0x001fd4                  _extract_integer
+                  0x002052                  _next_value
+                  0x00208e                  _UART_Init
+                  0x00210a                  _send_uart_char
+                  0x002146                  _send_uart_string
+                  0x00216a                  _spi_init
+                  0x0021ba                  _spi_transfer
+                  0x0021de                  _spi_write
+                  0x0021f2                  _spi_read
+                  0x002204                  _spi_read_multiple
 
 External Symbols in Program Memory (by name):
 
-                  0x00209a                  _UART_Init
+                  0x00208e                  _UART_Init
                   0x0003d0                  __DefaultInterrupt
                   0x00038e                  __T3Interrupt
                   0x0002fa                  __U1RXInterrupt
@@ -378,40 +378,40 @@ External Symbols in Program Memory (by name):
                   0x00075e                  __unpackdnrmf
                   0x0008a8                  __unpackf
                   0x001306                  _atoi
-                  0x001cda                  _buffer_init
-                  0x001db8                  _buffer_peek
-                  0x001d6c                  _buffer_read
-                  0x001d22                  _buffer_write
-                  0x0017ba                  _calculate_moving_average
-                  0x001e08                  _detect_pattern
-                  0x001fe0                  _extract_integer
-                  0x00192a                  _main
+                  0x001cce                  _buffer_init
+                  0x001dac                  _buffer_peek
+                  0x001d60                  _buffer_read
+                  0x001d16                  _buffer_write
+                  0x0017aa                  _calculate_moving_average
+                  0x001dfc                  _detect_pattern
+                  0x001fd4                  _extract_integer
+                  0x00191e                  _main
                   0x001352                  _memcpy
                   0x001360                  _memset
-                  0x00181e                  _merge_significant_bits
-                  0x00205e                  _next_value
-                  0x001ee0                  _parse_byte
-                  0x0018a2                  _process_uart
-                  0x002116                  _send_uart_char
-                  0x002152                  _send_uart_string
-                  0x001878                  _simulate_algorithm
-                  0x002176                  _spi_init
-                  0x0021fe                  _spi_read
-                  0x002210                  _spi_read_multiple
-                  0x0021c6                  _spi_transfer
-                  0x0021ea                  _spi_write
+                  0x00180e                  _merge_significant_bits
+                  0x002052                  _next_value
+                  0x001ed4                  _parse_byte
+                  0x001892                  _process_uart
+                  0x00210a                  _send_uart_char
+                  0x002146                  _send_uart_string
+                  0x001868                  _simulate_algorithm
+                  0x00216a                  _spi_init
+                  0x0021f2                  _spi_read
+                  0x002204                  _spi_read_multiple
+                  0x0021ba                  _spi_transfer
+                  0x0021de                  _spi_write
                   0x0009f2                  _strcmp
                   0x001428                  _strlen
-                  0x001a9e                  _tmr_setup_period
-                  0x001c86                  _tmr_turn
-                  0x001bce                  _tmr_wait_ms
-                  0x001c50                  _tmr_wait_ms_3
-                  0x001b9c                  _tmr_wait_period
-                  0x001bfa                  _tmr_wait_period_3
+                  0x001a92                  _tmr_setup_period
+                  0x001c7a                  _tmr_turn
+                  0x001bc2                  _tmr_wait_ms
+                  0x001c44                  _tmr_wait_ms_3
+                  0x001b90                  _tmr_wait_period
+                  0x001bee                  _tmr_wait_period_3
                   0x001458                  _tolower
                   0x001466                  _toupper
-                  0x001df0                  _uart_debug_send
-                  0x001884                  _update_led
+                  0x001de4                  _uart_debug_send
+                  0x001874                  _update_led
 
 Memory Configuration
 
@@ -3707,45 +3707,45 @@ __c30_signature
  .ivt._T3Interrupt
                   0x000024          0x2 build/default/production/newmainXC16.o
 
-.const              0x9770         0x4a load address 0x001770  
- .const             0x9770         0x4a build/default/production/newmainXC16.o
+.const              0x9770         0x3a load address 0x001770  
+ .const             0x9770         0x3a build/default/production/newmainXC16.o
 
-.text             0x0017ba        0xa86
- .text            0x0017ba        0x2e4 build/default/production/newmainXC16.o
-                  0x0017ba                  _calculate_moving_average
-                  0x00181e                  _merge_significant_bits
-                  0x001878                  _simulate_algorithm
-                  0x001884                  _update_led
-                  0x0018a2                  _process_uart
-                  0x00192a                  _main
- .text            0x001a9e        0x23c build/default/production/timer.o
-                  0x001a9e                  _tmr_setup_period
-                  0x001b9c                  _tmr_wait_period
-                  0x001bce                  _tmr_wait_ms
-                  0x001bfa                  _tmr_wait_period_3
-                  0x001c50                  _tmr_wait_ms_3
-                  0x001c86                  _tmr_turn
- .text            0x001cda        0x206 build/default/production/buffer.o
-                  0x001cda                  _buffer_init
-                  0x001d22                  _buffer_write
-                  0x001d6c                  _buffer_read
-                  0x001db8                  _buffer_peek
-                  0x001df0                  _uart_debug_send
-                  0x001e08                  _detect_pattern
- .text            0x001ee0        0x1ba build/default/production/parser.o
-                  0x001ee0                  _parse_byte
-                  0x001fe0                  _extract_integer
-                  0x00205e                  _next_value
- .text            0x00209a         0xdc build/default/production/uart.o
-                  0x00209a                  _UART_Init
-                  0x002116                  _send_uart_char
-                  0x002152                  _send_uart_string
- .text            0x002176         0xca build/default/production/spi.o
-                  0x002176                  _spi_init
-                  0x0021c6                  _spi_transfer
-                  0x0021ea                  _spi_write
-                  0x0021fe                  _spi_read
-                  0x002210                  _spi_read_multiple
+.text             0x0017aa        0xa8a
+ .text            0x0017aa        0x2e8 build/default/production/newmainXC16.o
+                  0x0017aa                  _calculate_moving_average
+                  0x00180e                  _merge_significant_bits
+                  0x001868                  _simulate_algorithm
+                  0x001874                  _update_led
+                  0x001892                  _process_uart
+                  0x00191e                  _main
+ .text            0x001a92        0x23c build/default/production/timer.o
+                  0x001a92                  _tmr_setup_period
+                  0x001b90                  _tmr_wait_period
+                  0x001bc2                  _tmr_wait_ms
+                  0x001bee                  _tmr_wait_period_3
+                  0x001c44                  _tmr_wait_ms_3
+                  0x001c7a                  _tmr_turn
+ .text            0x001cce        0x206 build/default/production/buffer.o
+                  0x001cce                  _buffer_init
+                  0x001d16                  _buffer_write
+                  0x001d60                  _buffer_read
+                  0x001dac                  _buffer_peek
+                  0x001de4                  _uart_debug_send
+                  0x001dfc                  _detect_pattern
+ .text            0x001ed4        0x1ba build/default/production/parser.o
+                  0x001ed4                  _parse_byte
+                  0x001fd4                  _extract_integer
+                  0x002052                  _next_value
+ .text            0x00208e         0xdc build/default/production/uart.o
+                  0x00208e                  _UART_Init
+                  0x00210a                  _send_uart_char
+                  0x002146                  _send_uart_string
+ .text            0x00216a         0xca build/default/production/spi.o
+                  0x00216a                  _spi_init
+                  0x0021ba                  _spi_transfer
+                  0x0021de                  _spi_write
+                  0x0021f2                  _spi_read
+                  0x002204                  _spi_read_multiple
 
-.dinit            0x002240         0x42
- .dinit           0x002240         0x42 data_init
+.dinit            0x002234         0x42
+ .dinit           0x002234         0x42 data_init
