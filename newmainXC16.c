@@ -180,5 +180,5 @@ int main(void) {
 
 void __attribute__((__interrupt__, auto_psv)) _T3Interrupt(void) {
     IFS0bits.T3IF = 0; // Clear the Timer3 interrupt flag
-    led_toggle_flag = 1; // Set the flag to toggle LED
+    led_toggle_flag != led_toggle_flag; // Set the flag to toggle LED
 }
