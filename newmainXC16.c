@@ -65,7 +65,7 @@ void simulate_algorithm(void) {
 }
 
 void update_led(void) {
-    LATDbits.LATD2 ^= 1;
+    LATGbits.LATG9 ^= 1;
 }
 
 void process_uart(void) {
@@ -87,6 +87,7 @@ void process_uart(void) {
 int main(void) {
     ANSELA = ANSELB = ANSELC = ANSELD = ANSELE = ANSELG = 0x0000;
 
+    TRISGbits.TRISG9 = 0;
 
     UART_Init(UART_1);
     send_uart_char(UART_1, 'S');
