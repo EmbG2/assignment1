@@ -168,7 +168,7 @@ int main(void) {
             send_uart_string(buff);
         }
 
-//        process_uart();
+        process_uart();
         tmr_wait_period(TIMER2);
     }
 }
