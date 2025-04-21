@@ -125,6 +125,8 @@ int main(void) {
     tmr_turn(TIMER2, 1);
     tmr_setup_period(TIMER3, 100);
     tmr_turn(TIMER3, 1);
+    IFS0bits.T3IF = 0;  // Clear interrupt flag
+    IEC0bits.T3IE = 1;  // Enable Timer3 interrupt
 
     ps.state = STATE_DOLLAR;
 
