@@ -22,6 +22,9 @@
 #define NUM_READINGS 6
 #define MOVING_AVERAGE_SIZE 10
 
+
+volatile int led_toggle_flag = 0;
+
 char buff[35];
 
 int16_t moving_average_buffer_x[MOVING_AVERAGE_SIZE];
@@ -134,10 +137,10 @@ int main(void) {
 
         simulate_algorithm();
 
-        if (IFS0bits.T3IF) {
-            IFS0bits.T3IF = 0;
-            update_led();
-        }
+    if (led_toggle_flag) {
+        led_toggle_flag = 0;
+        update_led();
+    }
 
         // Magnetometer read (still every 10 ms for moving average)
         MAG_CS = 0;
@@ -174,4 +177,10 @@ int main(void) {
         process_uart();
         tmr_wait_period(TIMER1);
     }
+}
+
+
+void __attribute__((__interrupt__, auto_psv)) _T3Interrupt(void) {
+    IFS0bits.T3IF = 0; // Clear the Timer3 interrupt flag
+    led_toggle_flag = 1; // Set the flag to toggle LED
 }
