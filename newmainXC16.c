@@ -25,6 +25,7 @@
 
 
 int a = 0;
+char *patterns[] = {};
 char buff[35];
 
 int16_t moving_average_buffer_x[MOVING_AVERAGE_SIZE];
@@ -93,6 +94,9 @@ int main(void) {
     // Init LED2
     TRISGbits.TRISG9 = 0;
 
+    // Init buffer
+    buffer_init(&main_buffer_1, patterns, 0);
+    
     // Init parser
     parser_state pstate;
 	pstate.state = STATE_DOLLAR;
