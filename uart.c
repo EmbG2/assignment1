@@ -68,8 +68,8 @@ void __attribute__((__interrupt__, auto_psv)) _U1RXInterrupt(void) {
             buffer_read(&main_buffer_1, &tmp);
         }
 #else
-        buffer_write(&main_buffer_1, U1RXREG);
-        
+        char incoming = U1RXREG;
+        buffer_write(&main_buffer_1, incoming);
 #endif
     }
     if (U1STAbits.OERR){

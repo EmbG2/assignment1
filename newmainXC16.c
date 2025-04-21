@@ -177,13 +177,13 @@ int main(void) {
         yaw_send_timer += 10;
 
         // Send $MAG at mag_rate_hz
-        if (mag_rate_hz != 0) {
-            if (mag_send_timer >= (1000 / mag_rate_hz)) {
-                mag_send_timer = 0;
-                sprintf(buff, "$MAG,%d,%d,%d*\n", average_x, average_y, average_z);
-                send_uart_string(buff);
-            }
-        }
+//        if (mag_rate_hz != 0) {
+//            if (mag_send_timer >= (1000 / mag_rate_hz)) {
+//                mag_send_timer = 0;
+//                sprintf(buff, "$MAG,%d,%d,%d*\n", average_x, average_y, average_z);
+//                send_uart_string(buff);
+//            }
+//        }
 
         // Send $YAW every 200 ms (5 Hz)
 //        if (yaw_send_timer >= 200) {
