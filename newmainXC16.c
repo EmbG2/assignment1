@@ -136,37 +136,37 @@ int main(void) {
 
         simulate_algorithm();
 
-//        // Magnetometer read (still every 10 ms for moving average)
-//        MAG_CS = 0;
-//        spi_read_multiple(readings, 0x42);
-//        MAG_CS = 1;
-//
-//        int16_t x_data = merge_significant_bits(readings[0], readings[1], 1);
-//        int16_t average_x = calculate_moving_average(x_data, moving_average_buffer_x, &buffer_x_index);
-//
-//        int16_t y_data = merge_significant_bits(readings[2], readings[3], 2);
-//        int16_t average_y = calculate_moving_average(y_data, moving_average_buffer_y, &buffer_y_index);
-//
-//        int16_t z_data = merge_significant_bits(readings[4], readings[5], 3);
-//        int16_t average_z = calculate_moving_average(z_data, moving_average_buffer_z, &buffer_z_index);
-//
-//        mag_send_timer += 10; // Increase by 10 ms every loop
-//        yaw_send_timer += 10;
-//
-//        // Send $MAG at mag_rate_hz
-//        if (mag_rate_hz != 0 && mag_send_timer >= (1000 / mag_rate_hz)) {
-//            mag_send_timer = 0;
-//            sprintf(buff, "$MAG,%d,%d,%d*\n", average_x, average_y, average_z);
-//            send_uart_string(buff);
-//        }
-//
-//        // Send $YAW every 200 ms (5 Hz)
-//        if (yaw_send_timer >= 200) {
-//            yaw_send_timer = 0;
-//            int heading_deg = atan2(average_y, average_x) * (180.0 / M_PI);
-//            sprintf(buff, "$YAW,%d*\n", heading_deg);
-//            send_uart_string(buff);
-//        }
+        // Magnetometer read (still every 10 ms for moving average)
+        MAG_CS = 0;
+        spi_read_multiple(readings, 0x42);
+        MAG_CS = 1;
+
+        int16_t x_data = merge_significant_bits(readings[0], readings[1], 1);
+        int16_t average_x = calculate_moving_average(x_data, moving_average_buffer_x, &buffer_x_index);
+
+        int16_t y_data = merge_significant_bits(readings[2], readings[3], 2);
+        int16_t average_y = calculate_moving_average(y_data, moving_average_buffer_y, &buffer_y_index);
+
+        int16_t z_data = merge_significant_bits(readings[4], readings[5], 3);
+        int16_t average_z = calculate_moving_average(z_data, moving_average_buffer_z, &buffer_z_index);
+
+        mag_send_timer += 10; // Increase by 10 ms every loop
+        yaw_send_timer += 10;
+
+        // Send $MAG at mag_rate_hz
+        if (mag_rate_hz != 0 && mag_send_timer >= (1000 / mag_rate_hz)) {
+            mag_send_timer = 0;
+            sprintf(buff, "$MAG,%d,%d,%d*\n", average_x, average_y, average_z);
+            send_uart_string(buff);
+        }
+
+        // Send $YAW every 200 ms (5 Hz)
+        if (yaw_send_timer >= 200) {
+            yaw_send_timer = 0;
+            int heading_deg = atan2(average_y, average_x) * (180.0 / M_PI);
+            sprintf(buff, "$YAW,%d*\n", heading_deg);
+            send_uart_string(buff);
+        }
 
 //        process_uart();
         tmr_wait_period(TIMER2);
