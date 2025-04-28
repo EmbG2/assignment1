@@ -1,59 +1,73 @@
 #include "parser.h"
-#include "uart.h"
 
-void parse_uart_commands(char* uart_receive_buffer, int length, CommandState* commands) {
-    if (uart_receive_buffer[0] == '\0') return;
-
-    int cmd_i = 0;
-    while (commands[cmd_i].name != 0) {
-        commands[cmd_i].stop = 0;
-        cmd_i++;
+int parse_byte(parser_state* ps, char byte) {
+    switch (ps->state) {
+        case STATE_DOLLAR:
+            if (byte == '$') {
+                ps->state = STATE_TYPE;
+                ps->index_type = 0;
+            }
+            break;
+        case STATE_TYPE:
+            if (byte == ',') {
+                ps->state = STATE_PAYLOAD;
+                ps->msg_type[ps->index_type] = '\0';
+                ps->index_payload = 0; // initialize properly the index
+            } else if (ps->index_type == 6) { // error! 
+                ps->state = STATE_DOLLAR;
+                ps->index_type = 0;
+			} else if (byte == '*') {
+				ps->state = STATE_DOLLAR; // get ready for a new message
+                ps->msg_type[ps->index_type] = '\0';
+				ps->msg_payload[0] = '\0'; // no payload
+                return NEW_MESSAGE;
+            } else {
+                ps->msg_type[ps->index_type] = byte; // ok!
+                ps->index_type++; // increment for the next time;
+            }
+            break;
+        case STATE_PAYLOAD:
+            if (byte == '*') {
+                ps->state = STATE_DOLLAR; // get ready for a new message
+                ps->msg_payload[ps->index_payload] = '\0';
+                return NEW_MESSAGE;
+            } else if (ps->index_payload == 100) { // error
+                ps->state = STATE_DOLLAR;
+                ps->index_payload = 0;
+            } else {
+                ps->msg_payload[ps->index_payload] = byte; // ok!
+                ps->index_payload++; // increment for the next time;
+            }
+            break;
     }
+    return NO_MESSAGE;
+}
 
-    uart_transmit(URT1, uart_receive_buffer, length);
+int extract_integer(const char* str) {
+	int i = 0, number = 0, sign = 1;
+	
+	if (str[i] == '-') {
+		sign = -1;
+		i++;
+	}
+	else if (str[i] == '+') {
+		sign = 1;
+		i++;
+	}
+	while (str[i] != ',' && str[i] != '\0') {
+		number *= 10; // multiply the current number by 10;
+		number += str[i] - '0'; // converting character to decimal number
+		i++;
+	}
+	return sign*number;
+}		
 
-    int buf_i = 0;
-    while (uart_receive_buffer[buf_i] != '\0') {
-        cmd_i = 0;
-        while (commands[cmd_i].name != 0) {
-            if (commands[cmd_i].stop) {
-                cmd_i++;
-                continue;
-            }
-
-            int match = 1;
-            int j = 0;
-
-            while (commands[cmd_i].name[commands[cmd_i].save_index + j] != '\0') {
-                char received = uart_receive_buffer[buf_i + j];
-                char expected = commands[cmd_i].name[commands[cmd_i].save_index + j];
-
-                if (received == '\0') {
-                    commands[cmd_i].save_index += j;
-                    commands[cmd_i].stop = 1;
-                    match = 0;
-                    break;
-                }
-
-                if (received != expected) {
-                    match = 0;
-                    break;
-                }
-
-                j++;
-            }
-
-            if (!commands[cmd_i].stop && commands[cmd_i].save_index != 0 && !match) {
-                commands[cmd_i].save_index = 0;
-            }
-
-            if (match && !commands[cmd_i].stop) {
-                commands[cmd_i].activations++;
-            }
-
-            cmd_i++;
-        }
-
-        buf_i++;
+int next_value(const char* msg, int i) {
+    while (msg[i] != ',' && msg[i] != '\0') { 
+        i++; 
     }
+    if (msg[i] == ',') {
+        i++;
+    }
+    return i;
 }

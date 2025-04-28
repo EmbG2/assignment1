@@ -1,15 +1,7 @@
-/*
- * File:   timer.c
- * Author: EmbeddedG2
- *
- * Created on February 28, 2025, 11:04 AM
- */
-
-
 #include "xc.h"
 #include "timer.h"
 #define FCY 72000000UL
-
+ 
 void tmr_setup_period(int timer, int ms) {
     unsigned int prescaler;
     double period;
@@ -36,7 +28,8 @@ void tmr_setup_period(int timer, int ms) {
     // Period of the timer with respect to the period of the tick
     // <period> = duration / (T_tick * 1000)
     // it is divided by 1000 to convert from seconds to milliseconds
-    period  = ((double)FCY / (prescaler * 1000)) * ms;
+//    period  = ((double)FCY / (prescaler * 1000)) * ms;
+    period = ((double)FCY / prescaler) * ( (double)ms / 1000.0 );
 
     switch(timer){
         case TIMER1:
@@ -44,14 +37,18 @@ void tmr_setup_period(int timer, int ms) {
             T1CONbits.TCKPS = prescaler_type;   // Set the Timer Clock Prescaler value
             PR1 = period;                       // Period Register for Timer1
             TMR1 = 0;                           // Reset the number of tick counted by the timer
-            T1CONbits.TON = 1;                  // Turn on the Timer1 (start counting)
             break;
         case TIMER2:
             T2CONbits.TON = 0;
             T2CONbits.TCKPS = prescaler_type;
             PR2 = period;
             TMR2 = 0;
-            T2CONbits.TON = 1;
+            break;
+         case TIMER3:
+            T3CONbits.TON = 0;
+            T3CONbits.TCKPS = prescaler_type;
+            PR3 = period;
+            TMR3 = 0;
             break;
     }
 }
@@ -71,6 +68,7 @@ void tmr_wait_period(int timer){
 
 void tmr_wait_ms(int timer, int ms){
     tmr_setup_period(timer, ms);
+    tmr_turn(timer, 1);
     tmr_wait_period(timer);
     if (timer == TIMER1){
         T1CONbits.TON = 0;
@@ -107,7 +105,23 @@ void tmr_wait_ms_3(int timer, int ms){
     while (ms > 0) {
         int wait_time = (ms > 200) ? 200 : ms; 
         tmr_setup_period(timer, wait_time);
+        tmr_turn(timer, 1);
         expired = tmr_wait_period_3(timer);
         ms -= wait_time;
     }
 }
+
+void tmr_turn(int timer, int value){
+    switch(timer){
+        case TIMER1:
+            T1CONbits.TON = value;                  // Turn on the Timer1 (start counting)
+            break;
+        case TIMER2:
+            T2CONbits.TON = value;
+            break;
+        case TIMER3:
+            T3CONbits.TON = value;
+            break;
+    }
+}
+ 
