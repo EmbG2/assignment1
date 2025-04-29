@@ -111,7 +111,7 @@ int main(void) {
             send_uart_string(UART_1, buff);
         }
         
-        if (led_timer >= 50){
+        if (led_timer >= 500){
             led_timer = 0;
             update_led();
         }
