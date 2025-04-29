@@ -119,7 +119,10 @@ int main(void) {
             update_led();
         }
 
+        U1MODEbits.UARTEN = 1;
         process_uart();
+        U1MODEbits.UARTEN = 1;
+        
         tmr_wait_period(TIMER2);
         
         if (transmit_buffer1.count > 0){

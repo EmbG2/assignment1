@@ -13,6 +13,7 @@ void send_uart_char(unsigned char uart, char data) {
 }
 
 void send_uart_string(unsigned char uart, const char *buffer) {
+    IEC0bits.U1TXIE = 0;
     if (uart == UART_1){
         while (*buffer != '\n') {
             send_uart_char(UART_1, *buffer++);
@@ -24,6 +25,7 @@ void send_uart_string(unsigned char uart, const char *buffer) {
         }
         send_uart_char(UART_2, '\n');
     }
+    IEC0bits.U1TXIE = 1;
 }
 
 void UART_Init(unsigned char uart) {
