@@ -70,11 +70,7 @@ int main(void) {
     send_uart_char(UART_1, '\n');
 
     tmr_setup_period(TIMER2, 10);
-    tmr_turn(TIMER2, 1);
-    tmr_setup_period(TIMER3, 100);
-    tmr_turn(TIMER3, 1);
-    IFS0bits.T3IF = 0; 
-    IEC0bits.T3IE = 1;  
+    tmr_turn(TIMER2, 1); 
 
     ps.state = STATE_DOLLAR;
 
