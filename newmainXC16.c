@@ -73,7 +73,7 @@ int main(void) {
     send_uart_char(UART_1, chip_id % 16 + '0');
     send_uart_char(UART_1, '\n');
 
-    tmr_setup_period(TIMER2, 10);
+    tmr_setup_period(TIMER2, 15);
     
     static int mag_send_timer = 0;
     static int yaw_send_timer = 0;
@@ -127,9 +127,11 @@ int main(void) {
             IEC0bits.U1TXIE = 1;
         }
         
-        LATAbits.LATA0 = 0; // default off
-        if (tmr_wait_period_3(TIMER2)) {
-            LATAbits.LATA0 = 1; // on only if timer expired early
+        ret = tmr_wait_period_3(TIMER2);
+        if (ret){
+            LATAbits.LATA0 = 1;
+        } else {
+            LATAbits.LATA0 = 0;
         }
     }   
 }
@@ -159,7 +161,7 @@ int16_t merge_significant_bits(uint8_t low, uint8_t high, int axis) {
 }
 
 void simulate_algorithm(void) {
-//    tmr_wait_ms(TIMER1, 7);
+    tmr_wait_ms(TIMER1, 7);
 }
 
 void update_led(void) {
