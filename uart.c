@@ -102,15 +102,23 @@ void __attribute__((__interrupt__, auto_psv)) _U2RXInterrupt(void) {
 }
 
 void __attribute__((__interrupt__, auto_psv)) _U1TXInterrupt(void){
-    char data;
-    buffer_read(&transmit_buffer1, &data);
-    U1TXREG = data;
     IFS0bits.U1TXIF = 0;
-    // if no data ready for sending out
+    char data;
+
+    while (transmit_buffer1.count > 0) {
+        if (!U1STAbits.UTXBF) {
+            buffer_read(&transmit_buffer1, &data);
+            U1TXREG = data;
+        } else {
+            break;
+        }
+    }
+
     if (transmit_buffer1.count <= 0){
         IEC0bits.U1TXIE = 0;
     }
 }
+
 
 void __attribute__((__interrupt__, auto_psv)) _U2TXInterrupt(void){
     char data;
