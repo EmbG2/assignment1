@@ -119,9 +119,9 @@ int main(void) {
             update_led();
         }
 
-        U1MODEbits.UARTEN = 1;
+        IEC0bits.U1RXIE = 0;
         process_uart();
-        U1MODEbits.UARTEN = 1;
+        IEC0bits.U1RXIE = 1;
         
         tmr_wait_period(TIMER2);
         
