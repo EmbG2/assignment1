@@ -159,7 +159,7 @@ int16_t merge_significant_bits(uint8_t low, uint8_t high, int axis) {
 }
 
 void simulate_algorithm(void) {
-    tmr_wait_ms(TIMER1, 7);
+//    tmr_wait_ms(TIMER1, 7);
 }
 
 void update_led(void) {
