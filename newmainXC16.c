@@ -128,13 +128,12 @@ int main(void) {
             IEC0bits.U1TXIE = 1;
         }
         
-        ret = tmr_wait_period_3(TIMER2);
-        if (ret){
+        if (tmr_wait_period_3(TIMER2)) {
             LATAbits.LATA0 = 1;
-        } else{
+            tmr_wait_ms(TIMER1, 1); // wait 1 ms
             LATAbits.LATA0 = 0;
         }
-        
+   
     }   
 }
 
