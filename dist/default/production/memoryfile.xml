@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project>
-  <executable name="dist/default/production/assignment1-shady.production.elf">
+  <executable name="dist/default/production/0x08-assignment1.production.elf">
     <memory name="data">
       <units>bytes</units>
       <length>53248</length>
-      <used>782</used>
-      <free>52466</free>
+      <used>784</used>
+      <free>52464</free>
     </memory>
     <memory name="program">
       <units>bytes</units>
       <length>524544</length>
-      <used>14877</used>
-      <free>509667</free>
+      <used>14805</used>
+      <free>509739</free>
     </memory>
   </executable>
 </project>

@@ -3,6 +3,8 @@
 
 CircularBuffer main_buffer_1;
 CircularBuffer main_buffer_2;
+CircularBuffer transmit_buffer1;
+CircularBuffer transmit_buffer2;
 
 void buffer_init(CircularBuffer *buffer, char **patterns, int pattern_count)
 {

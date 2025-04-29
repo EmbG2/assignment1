@@ -27,6 +27,8 @@ void detect_pattern(CircularBuffer *buffer);
 
 extern CircularBuffer main_buffer_1;
 extern CircularBuffer main_buffer_2;
+extern CircularBuffer transmit_buffer1; 
+extern CircularBuffer transmit_buffer2;
 
 #ifdef	__cplusplus
 extern "C" {
