@@ -94,6 +94,7 @@ int main(void) {
 
         mag_send_timer += 10;
         yaw_send_timer += 10;
+        led_timer += 10;
 
         if (mag_rate_hz != 0) {
             if (mag_send_timer >= (1000 / mag_rate_hz)) {
