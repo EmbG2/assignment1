@@ -33,6 +33,10 @@ void update_led(void);
 int main(void) {
     ANSELA = ANSELB = ANSELC = ANSELD = ANSELE = ANSELG = 0x0000;
 
+    // Init LED1
+    int ret;
+    TRISAbits.TRISA0 = 0;
+    
     // Init LED2
     TRISGbits.TRISG9 = 0;
     
@@ -120,10 +124,15 @@ int main(void) {
         process_uart();
         IEC0bits.U1RXIE = 1;
         
-        tmr_wait_period(TIMER2);
-        
         if (transmit_buffer1.count > 0){
             IEC0bits.U1TXIE = 1;
+        }
+        
+        ret = tmr_wait_period_3(TIMER2);
+        if (ret){
+            LATAbits.LATA0 = 1;
+        } else{
+            LATAbits.LATA0 = 0;
         }
         
     }   
