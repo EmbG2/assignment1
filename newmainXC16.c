@@ -128,12 +128,10 @@ int main(void) {
             IEC0bits.U1TXIE = 1;
         }
         
+        LATAbits.LATA0 = 0; // default off
         if (tmr_wait_period_3(TIMER2)) {
-            LATAbits.LATA0 = 1;
-            tmr_wait_ms(TIMER1, 1); // wait 1 ms
-            LATAbits.LATA0 = 0;
+            LATAbits.LATA0 = 1; // on only if timer expired early
         }
-   
     }   
 }
 
