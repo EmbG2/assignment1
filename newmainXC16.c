@@ -74,13 +74,12 @@ int main(void) {
     send_uart_char(UART_1, '\n');
 
     tmr_setup_period(TIMER2, 10);
-    tmr_turn(TIMER2, 1); 
-
-    ps.state = STATE_DOLLAR;
-
+    
     static int mag_send_timer = 0;
     static int yaw_send_timer = 0;
     static int led_timer = 0;
+    
+    tmr_turn(TIMER2, 1); 
     while (1) {
 
         simulate_algorithm();
