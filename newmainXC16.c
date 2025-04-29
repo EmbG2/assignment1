@@ -12,7 +12,7 @@
 #define NUM_READINGS 6
 #define MOVING_AVERAGE_SIZE 5
 
-int tmr_counter = 0;
+int ret;
 char *patterns[] = {};
 char buff[35];
 int16_t moving_average_buffer_x[MOVING_AVERAGE_SIZE];
@@ -33,10 +33,6 @@ void update_led(void);
 int main(void) {
     ANSELA = ANSELB = ANSELC = ANSELD = ANSELE = ANSELG = 0x0000;
 
-    // Init LED1
-    int ret;
-    TRISAbits.TRISA0 = 0;
-    
     // Init LED2
     TRISGbits.TRISG9 = 0;
     
@@ -45,10 +41,9 @@ int main(void) {
     buffer_init(&transmit_buffer2, patterns, 0);
     
     // Init parser
-    parser_state pstate;
-	pstate.state = STATE_DOLLAR;
-	pstate.index_type = 0; 
-	pstate.index_payload = 0;
+	ps.state = STATE_DOLLAR;
+	ps.index_type = 0; 
+	ps.index_payload = 0;
     
     UART_Init(UART_1);
     
@@ -73,13 +68,13 @@ int main(void) {
     send_uart_char(UART_1, chip_id % 16 + '0');
     send_uart_char(UART_1, '\n');
 
-    tmr_setup_period(TIMER2, 15);
-    
     static int mag_send_timer = 0;
     static int yaw_send_timer = 0;
     static int led_timer = 0;
     
+    tmr_setup_period(TIMER2, 10);
     tmr_turn(TIMER2, 1); 
+    
     while (1) {
 
         simulate_algorithm();
@@ -130,12 +125,14 @@ int main(void) {
         ret = tmr_wait_period_3(TIMER2);
         if (ret){
             LATAbits.LATA0 = 1;
-        } else {
+        } else{
             LATAbits.LATA0 = 0;
         }
-    }   
+        T2CONbits.TON = 0;
+        TMR2 =0;
+        T2CONbits.TON = 1;
+    }
 }
-
 int16_t calculate_moving_average(int16_t new_value, int16_t buffer[MOVING_AVERAGE_SIZE], uint8_t *idx) {
     buffer[*idx] = new_value;
     *idx = (*idx + 1) % MOVING_AVERAGE_SIZE;
@@ -187,4 +184,3 @@ void process_uart(void) {
         }
     }
 }
-
