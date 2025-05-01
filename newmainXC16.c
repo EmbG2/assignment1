@@ -34,19 +34,20 @@ int main(void) {
     ANSELA = ANSELB = ANSELC = ANSELD = ANSELE = ANSELG = 0x0000;
 
     // Init LED2
+    TRISAbits.TRISA0 = 0; 
     TRISGbits.TRISG9 = 0;
-    
+
     buffer_init(&main_buffer_1, patterns, 0);
     buffer_init(&transmit_buffer1, patterns, 0);
     buffer_init(&transmit_buffer2, patterns, 0);
-    
+
     // Init parser
-	ps.state = STATE_DOLLAR;
-	ps.index_type = 0; 
-	ps.index_payload = 0;
-    
+    ps.state = STATE_DOLLAR;
+    ps.index_type = 0; 
+    ps.index_payload = 0;
+
     UART_Init(UART_1);
-    
+
     spi_init();
     tmr_wait_ms(TIMER1, 5);
 
@@ -54,7 +55,7 @@ int main(void) {
     spi_write(0x4B, 0x01);
     MAG_CS = 1;
     tmr_wait_ms(TIMER1, 5);
-    
+
     MAG_CS = 0;
     spi_write(0x4C, 0x30);
     MAG_CS = 1;
@@ -63,7 +64,7 @@ int main(void) {
     MAG_CS = 0;
     uint8_t chip_id = spi_read(0x40);
     MAG_CS = 1;
-    
+
     send_uart_char(UART_1, chip_id / 16 + '0');
     send_uart_char(UART_1, chip_id % 16 + '0');
     send_uart_char(UART_1, '\n');
@@ -71,14 +72,13 @@ int main(void) {
     static int mag_send_timer = 0;
     static int yaw_send_timer = 0;
     static int led_timer = 0;
-    
-    tmr_setup_period(TIMER2, 10);
-    tmr_turn(TIMER2, 1); 
-    
-    while (1) {
 
+    tmr_setup_period(TIMER2, 11);
+    tmr_turn(TIMER2, 1); 
+
+    while(1){
         simulate_algorithm();
-        
+
         // Read Magnetometer from SPI
         MAG_CS = 0;
         spi_read_multiple(readings, 0x42);
@@ -108,7 +108,7 @@ int main(void) {
             sprintf(buff, "$YAW,%d*\n", heading_deg);
             send_uart_string(UART_1, buff);
         }
-        
+
         if (led_timer >= 500){
             led_timer = 0;
             update_led();
@@ -117,22 +117,20 @@ int main(void) {
         IEC0bits.U1RXIE = 0;
         process_uart();
         IEC0bits.U1RXIE = 1;
-        
+
         if (transmit_buffer1.count > 0){
             IEC0bits.U1TXIE = 1;
         }
-        
+
         ret = tmr_wait_period_3(TIMER2);
         if (ret){
             LATAbits.LATA0 = 1;
         } else{
             LATAbits.LATA0 = 0;
         }
-        T2CONbits.TON = 0;
-        TMR2 =0;
-        T2CONbits.TON = 1;
     }
 }
+
 int16_t calculate_moving_average(int16_t new_value, int16_t buffer[MOVING_AVERAGE_SIZE], uint8_t *idx) {
     buffer[*idx] = new_value;
     *idx = (*idx + 1) % MOVING_AVERAGE_SIZE;

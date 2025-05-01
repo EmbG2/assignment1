@@ -24,7 +24,7 @@ void tmr_setup_period(int timer, int ms) {
         prescaler *= 8;     // 8
         prescaler_type++;   // 1
     }
-    if(ms > 10) {
+    if(ms >= 10) {
         prescaler *= 8;     // 64
         prescaler_type++;   // 2
     }
@@ -81,26 +81,22 @@ void tmr_wait_ms(int timer, int ms){
 }
 
 int tmr_wait_period_3(int timer){
-    int expired = 0;
     switch (timer){
         case TIMER1:
             if (IFS0bits.T1IF) {
-                expired = 1;
-                break;
+                IFS0bits.T1IF = 0;
+                return 1;
             }
-            while (IFS0bits.T1IF == 0);
-            IFS0bits.T1IF = 0;
-            break;
+            tmr_wait_period(timer);
+            return 0;
         case TIMER2:
             if (IFS0bits.T2IF) {
-                expired = 1;
-                break;
+                IFS0bits.T2IF = 0;
+                return 1;
             }
-            while (IFS0bits.T2IF == 0);
-            IFS0bits.T2IF = 0;
-            break;
+            tmr_wait_period(timer);
+            return 0;
     }
-    return expired;
 }
 
 void tmr_wait_ms_3(int timer, int ms){

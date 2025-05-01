@@ -3,10 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/UNIGE/embedded_systems/assignment1/newmainXC16.c</file>
-            <file>file:/E:/UNIGE/embedded_systems/assignment1/timer.c</file>
-            <file>file:/E:/UNIGE/embedded_systems/assignment1/spi.c</file>
-            <file>file:/E:/UNIGE/embedded_systems/assignment1/uart.c</file>
+            <file>file:/D:/UNIGE/Embedded%20Systems/code/0x08-assignment1/buffer.c</file>
+            <file>file:/D:/UNIGE/Embedded%20Systems/code/0x08-assignment1/newmainXC16.c</file>
+            <file>file:/D:/UNIGE/Embedded%20Systems/code/0x08-assignment1/parser.c</file>
+            <file>file:/D:/UNIGE/Embedded%20Systems/code/0x08-assignment1/uart.c</file>
+            <file>file:/D:/UNIGE/Embedded%20Systems/code/0x08-assignment1/spi.c</file>
+            <file>file:/D:/UNIGE/Embedded%20Systems/code/0x08-assignment1/timer.c</file>
         </group>
     </open-files>
 </project-private>
