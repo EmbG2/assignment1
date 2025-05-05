@@ -20,15 +20,15 @@ void tmr_setup_period(int timer, int ms) {
     // Set the pre-scaler layers and the corresponding type
     prescaler = 1;
     int prescaler_type = 0;
-    if(ms > 2) {
+    if(ms > 1) {
         prescaler *= 8;     // 8
         prescaler_type++;   // 1
     }
-    if(ms >= 10) {
+    if(ms >= 7) {
         prescaler *= 8;     // 64
         prescaler_type++;   // 2
     }
-    if(ms > 50) {
+    if(ms > 57) {
         prescaler *= 4;     // 256
         prescaler_type++;   // 3
     }
